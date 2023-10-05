@@ -11,8 +11,9 @@ with open(sys.argv[1]) as csv_file:
     #create array of item values
     #create array of item weights
     for line in csv_reader:
-        item_value.append(int(line[0]))
-        item_weight.append(int(line[1]))
+        if int(line[0]) < knapsack_capacity:
+            item_value.append(int(line[0]))
+            item_weight.append(int(line[1]))
 
     #create matrix[rows == len(item_array), cols == len(knapsack_capacity)]
     rows = len(item_value)
