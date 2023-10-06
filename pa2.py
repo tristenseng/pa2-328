@@ -34,12 +34,15 @@ with open(sys.argv[1]) as csv_file:
     max_value = matrix[rows][cols]
 
     #find items taken
-    items = []
-    for i in range(n, 0, -1):
-        if matrix[i][knapsack_capacity] != matrix[i-1][knapsack_capacity-1]:
-            items.append(i-1)
-            knapsack_capacity -= item_weight[i-1]
+    selected_items = []
+    i = n
+    w = knapsack_capacity
+    while i > 0 and w > 0:
+        if matrix[i][w] != matrix[i - 1][w]:
+            selected_items.append(item_weight[i - 1])
+            w -= item_weight[i - 1]
+        i -= 1
 
     print("Maximum Value:", max_value)
-    print(items)
+    print(selected_items)
 
