@@ -1,3 +1,6 @@
+#Tristen Seng
+#tristen.seng@student.csulb.edu
+#025683201
 import sys
 import csv
 
@@ -34,15 +37,14 @@ with open(sys.argv[1]) as csv_file:
     max_value = matrix[rows][cols]
 
     #find items taken
-    selected_items = []
+    items = []
     i = n
     w = knapsack_capacity
     while i > 0 and w > 0:
         if matrix[i][w] != matrix[i - 1][w]:
-            selected_items.append(item_weight[i - 1])
+            items.append(item_weight[i - 1])
             w -= item_weight[i - 1]
         i -= 1
 
-    print("Maximum Value:", max_value)
-    print(selected_items)
+    print("Max value of items taken is {}. Array of weights of items taken is {}".format(max_value, items))
 
