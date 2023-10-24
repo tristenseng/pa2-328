@@ -25,10 +25,12 @@ with open(sys.argv[1]) as csv_file:
     n = rows
 
     #fill matrix
-    for i in range(1, rows+1):
-        for j in range(1, cols+1):
+    for i in range(rows+1):
+        for j in range(cols+1):
             #if curr item weight > curr capacity
-            if item_weight[i-1] > j:
+            if i == 0 or j == 0:
+                matrix[i][j] = 0
+            elif item_weight[i-1] > j:
                 matrix[i][j] = matrix[i-1][j]
             else:
                 matrix[i][j] = max(matrix[i-1][j], matrix[i-1][j - item_weight[i-1]] + item_value[i-1])
